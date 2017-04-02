@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ClickTrip</title>
+
+    <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="bower_components/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="js/main.js"></script>
+
+</head>
+<body class="container" ng-app="app">
+    <div ng-controller="mainCtrl">
+
+        <div class="sk-folding-cube" ng-show="loading">
+            <div class="sk-cube1 sk-cube"></div>
+            <div class="sk-cube2 sk-cube"></div>
+            <div class="sk-cube4 sk-cube"></div>
+            <div class="sk-cube3 sk-cube"></div>
+        </div>
+
+        <div class="jumbotron" ng-show="!rolling">
+            <h1>ClickTrip</h1>
+            <form ng-submit="start()">
+                <div class="form-group">
+                    <label for="keyword">Keyword</label>
+                    <input id="keyword" class="form-control" ng-model="keyword" placeholder="Enter a keyword">
+                </div>
+            </form>
+        </div>
+
+        <div>
+            <button class="btn-default btn" ng-if="rolling" ng-click="stopRolling()">Change keyword</button>
+        </div>
+
+        <img ng-if="image" src="{{image.url}}" width="800" />
+    </div>
+</body>
+</html>
